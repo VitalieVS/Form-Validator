@@ -16,7 +16,14 @@ class FormValidator {
         return this._messages;
     }
 
+    setLocalData() {
+        for (let index in this.data) {
+            localStorage.setItem(index, this.data[index].value);
+        }
+    }
+
     validate() {
+        let result;
         if (!this.validateName()) {
             this.data.name.value = this.messages;
         }
@@ -26,7 +33,8 @@ class FormValidator {
         if (!this.validatePhone()) {
             this.data.phone.value = this.messages;
         }
-        return this.validateName() && this.validatePhone() && this.validateMail();
+        (this.validateName() && this.validatePhone() && this.validateMail()) ? this.setLocalData() : result = false;
+        return result;
     }
 
     validateName() {
