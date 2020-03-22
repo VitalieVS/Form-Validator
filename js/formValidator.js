@@ -60,9 +60,9 @@ class FormValidator {
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('logForm');
     form.addEventListener('submit', (e) => {
-        const validate = new FormValidator();
-        validate.validate();
-        if (!validate.validate()) {
+        const validator = new FormValidator();
+        validator.validate();
+        if (!validator.validate()) {
             e.preventDefault();
         }
     });
